@@ -9,8 +9,12 @@
         $created = date('Y-m-d h:i:s');
     
         $params = array($name, $email, $address, $phone, $uid, $created);
-        $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?)", $params);        
-        
+        try {
+            $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?)", $params);        
+        }
+        catch (Exception $e) {
+            echo $e;
+        }
         sqlsrv_free_stmt($query); 
         header("Location: index.php");
     }
