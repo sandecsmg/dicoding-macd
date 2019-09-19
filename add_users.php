@@ -8,7 +8,14 @@
         $uid = md5($name.$phone);
         $created = date('Y-m-d h:i:s');
     
-        $query = $conn->prepare("INSERT INTO users (name, email, address, phone, user_id, created_at) VALUES ('$name', '$email', '$address', '$phone', '$uid', '$created')");
+        $query = $conn->prepare("INSERT INTO users (name, email, address, phone, user_id, created_at) VALUES (:name, :email, :address, :phone, :uid, :created)");
+        $query->bindparam(':name', $name);
+        $query->bindparam(':email', $email);
+        $query->bindparam(':address', $address);
+        $query->bindparam(':phone', $phone);
+        $query->bindparam(':uid', $uid);
+        $query->bindparam(':created', $created);        
+
         $query->execute();
         
         header("Location: index.php");
