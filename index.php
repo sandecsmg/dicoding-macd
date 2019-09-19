@@ -42,7 +42,6 @@
                         <th>Address</th>
                         <th>User ID</th>
                         <th>Phone</th>
-                        <th>Created at</th>
                     </thead>
                     <tbody>
                         <?php
@@ -54,7 +53,6 @@
                                 echo "<td>".$data['address']."</td>";
                                 echo "<td>".$data['user_id']."</td>";
                                 echo "<td>".$data['phone']."</td>";
-                                echo "<td>".$data['created_at']."</td>";
                                 echo "</tr>";
                             }
                         ?>
