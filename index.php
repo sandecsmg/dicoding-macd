@@ -46,8 +46,8 @@
                     </thead>
                     <tbody>
                         <?php
-                            $query = mysqli_query($env, "select * from users");
-                            while($data = mysqli_fetch_array($query)) {
+                            $query = $conn->query('SELECT * FROM users');
+                            while($data = $query->fetch(PDO::FETCH_ASSOC)) {
                                 echo "<tr>";
                                 echo "<td>".$data['name']."</td>";
                                 echo "<td>".$data['email']."</td>";
