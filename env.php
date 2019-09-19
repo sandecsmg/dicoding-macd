@@ -1,9 +1,10 @@
 <?php
-    $host = 'tcp:azuresandec.database.windows.net';
-    $db = 'azuresandec';
-    $username = 'sandechebat';
-    $pass = 'Salamsandec123';
-    $port = '1433';
-
-    $env = mysqli_connect($host, $username, $pass, $db, $port);
+    try {
+        $conn = new PDO("sqlsrv:server = tcp:azuresandec.database.windows.net,1433; Database = azuresandec", "azuresandec", "Salamsandec31juli2016");
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch (PDOException $e) {
+        print("Error connecting to SQL Server.");
+        die(print_r($e));
+    }
 ?>
