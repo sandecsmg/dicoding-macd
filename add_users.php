@@ -9,16 +9,17 @@
             $uid = md5($name.$phone);
     
             $params = array($name, $email, $address, $phone, $uid);
-            try {
-                $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id) VALUES (?, ?, ?, ?, ?)", $params);
-            } catch (Exception $e) {
-                echo $e;
-            }
+
+            $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id) VALUES (?, ?, ?, ?, ?)", $params);
             sqlsrv_free_stmt($query);
+            
             header("Location: index.php");
         }
+        else {
+            echo "Oopsie";
+        }
     }
-catch(Exception $e) {
-    echo $e;
-}
+    catch(Exception $e) {
+        echo $e;
+    }
 ?>
