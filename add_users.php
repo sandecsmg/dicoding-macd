@@ -15,7 +15,7 @@
                 $err = sqlsrv_errors();
                 if ($err != null) {
                     foreach($err as $i) {
-                        echo $err['SQLSTATE'];
+                        echo $i['SQLSTATE'];
                     }
                 }
             }
