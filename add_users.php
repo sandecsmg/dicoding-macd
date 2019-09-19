@@ -8,16 +8,10 @@
         $uid = md5($name.$phone);
         $created = date('Y-m-d h:i:s');
     
-        $query = $conn->prepare("INSERT INTO users (name, email, address, phone, user_id, created_at) VALUES (:name, :email, :address, :phone, :uid, :created)");
-        $query->bindparam(':name', $name);
-        $query->bindparam(':email', $email);
-        $query->bindparam(':address', $address);
-        $query->bindparam(':phone', $phone);
-        $query->bindparam(':uid', $uid);
-        $query->bindparam(':created', $created);        
-
-        $query->execute();
+        $params = array($name, $email, $address, $phone, $uid, $created);
+        $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id, created_at) VALUES (?, ?, ?, ?, ?, ?)", $params);        
         
+        sqlsrv_free_stmt($query); 
         header("Location: index.php");
     }
 ?>
