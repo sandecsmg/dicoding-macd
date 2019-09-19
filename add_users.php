@@ -10,7 +10,8 @@
     
             $params = array($name, $email, $address, $phone, $uid);
 
-            $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id) VALUES (?, ?, ?, ?, ?)", $params);
+            $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id) VALUES ($name, $email, $address, $phone, $uid)");
+            // $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id) VALUES (?, ?, ?, ?, ?)", $params);
             if ($query == false) {
                 $err = sqlsrv_errors();
                 if ($err != null) {
