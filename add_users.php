@@ -15,7 +15,7 @@
                 $err = sqlsrv_errors();
                 if ($err != null) {
                     foreach($err as $i) {
-                        echo $i['SQLSTATE'];
+                        echo $i['message'];
                     }
                 }
             }
