@@ -8,7 +8,8 @@
         $uid = md5($name.$phone);
         $created = date('Y-m-d h:i:s');
     
-        mysqli_query($env, "INSERT INTO users (name, email, address, phone, user_id, created_at) VALUES ('$name', '$email', '$address', '$phone', '$uid', '$created')");
+        $query = $conn->prepare("INSERT INTO users (name, email, address, phone, user_id, created_at) VALUES ('$name', '$email', '$address', '$phone', '$uid', '$created')");
+        $query->execute();
         
         header("Location: index.php");
     }
