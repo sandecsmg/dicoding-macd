@@ -9,6 +9,8 @@
             $uid = md5($name.$phone);
     
             $params = array($name, $email, $address, $phone, $uid);
+            
+            $sql = "INSERT INTO users (name, email, address, phone, user_id) VALUES ('$name', '$email', '$address', '$phone', '$uid')";
 
             $query = $conn->exec($sql);
             // $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id) VALUES (?, ?, ?, ?, ?)", $params);
