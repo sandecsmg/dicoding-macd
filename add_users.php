@@ -10,7 +10,7 @@
     
             $params = array($name, $email, $address, $phone, $uid);
 
-            $query = mysqli_query($conn, "INSERT INTO users (name, email, address, phone, user_id) VALUES ('$name', '$email', '$address', '$phone', '$uid')");
+            $query = $conn->exec($sql);
             // $query = sqlsrv_query($conn, "INSERT INTO users (name, email, address, phone, user_id) VALUES (?, ?, ?, ?, ?)", $params);
             if ($query == false) {
                 $err = sqlsrv_errors();
